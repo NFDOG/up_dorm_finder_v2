@@ -85,7 +85,7 @@ function Header() {
 
       {/* Mobile Filter Drawer */}
       {isFilterOpen && (
-        <div className="fixed inset-0 z-50 lg:hidden">
+        <div className="fixed inset-0 z-101 lg:hidden">
           <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={() => setIsFilterOpen(false)} />
           <div className="absolute bottom-0 inset-x-0 bg-white rounded-t-[3rem] shadow-2xl overflow-hidden transition-transform animate-in slide-in-from-bottom duration-300">
             <div className="p-6 border-b border-gray-100 flex justify-between items-center">
@@ -119,7 +119,7 @@ export default function RootLayout({
         {children}
 
         {/* Sticky Bottom Navigation */}
-        <nav className="fixed bottom-0 inset-x-0 bg-white/90 backdrop-blur-xl border-t border-gray-100 px-8 py-4 z-40 safe-area-bottom shadow-[0_-8px_30px_rgb(0,0,0,0.04)]">
+        <nav className="fixed bottom-0 inset-x-0 bg-white/90 backdrop-blur-xl border-t border-gray-100 px-8 py-4 z-[100] safe-area-bottom shadow-[0_-8px_30px_rgb(0,0,0,0.04)]">
           <div className="max-w-md mx-auto flex justify-between items-center">
             <Link href="/" className="flex flex-col items-center gap-1 text-up-purple">
               <Home size={24} strokeWidth={2.5} />
