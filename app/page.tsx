@@ -12,6 +12,8 @@ import { TagKey } from '@/lib/tags';
 
 function DormDirectory() {
   const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
   const activeTag = searchParams.get('tag') as TagKey | null;
   const minPrice = parseInt(searchParams.get('minPrice') || '0');
   const maxPrice = parseInt(searchParams.get('maxPrice') || '100000');
