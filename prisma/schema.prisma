@@ -56,6 +56,9 @@ model Dormitory {
   // Spatial context
   purpleBusDist     Float?   @map("purple_bus_dist") // distance in meters
 
+  // Relations
+  reviews           Review[]
+
   // Metadata
   createdAt         DateTime @default(now()) @map("created_at")
   updatedAt         DateTime @updatedAt @map("updated_at")
