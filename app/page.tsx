@@ -9,6 +9,54 @@ import { getDistanceFromGate } from '@/lib/utils';
 import DormTag from '@/components/DormTag';
 import SearchSidebar from '@/components/SearchSidebar';
 
+
+// DormSkeleton Loading 
+function DormSkeleton() {
+  return (
+    <div className="bg-white rounded-[2.5rem] overflow-hidden shadow-sm border border-gray-100 flex flex-col h-full animate-pulse">
+      <div className="relative h-56 bg-gray-200" />
+      <div className="p-7 flex-1 flex flex-col justify-between">
+        <div>
+          <div className="h-3 w-24 bg-gray-100 rounded-full mb-4" />
+          <div className="h-6 w-3/4 bg-gray-200 rounded-xl mb-6" />
+          <div className="flex gap-2">
+            <div className="h-6 w-20 bg-gray-100 rounded-lg" />
+            <div className="h-6 w-20 bg-gray-100 rounded-lg" />
+          </div>
+        </div>
+        <div className="mt-8 flex justify-between items-center">
+          <div className="h-8 w-28 bg-gray-200 rounded-xl" />
+          <div className="h-11 w-11 bg-gray-100 rounded-2xl" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function DirectorySkeleton() {
+  return (
+    <div className="bg-gray-50 min-h-screen">
+      <div className="sticky top-[132px] z-30 bg-white/80 backdrop-blur-md border-b border-gray-100 py-4 px-6 overflow-hidden">
+        <div className="max-w-7xl mx-auto flex gap-3">
+          {[1, 2, 3, 4, 5].map((i) => (
+            <div key={i} className="h-8 w-24 bg-gray-200 rounded-xl animate-pulse shrink-0" />
+          ))}
+        </div>
+      </div>
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8 py-6 px-4 lg:px-6">
+        <div className="w-64 shrink-0 hidden lg:block bg-white h-[600px] rounded-[2.5rem] animate-pulse shadow-sm border border-gray-100" />
+        <main className="flex-1">
+          <div className="h-8 w-48 bg-gray-200 rounded-xl mb-6 animate-pulse" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[1, 2, 3, 4].map((i) => <DormSkeleton key={i} />)}
+          </div>
+        </main>
+      </div>
+    </div>
+  );
+}
+
+
 function DormDirectory() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -200,7 +248,7 @@ function DormDirectory() {
 
 export default function LandingPage() {
   return (
-    <Suspense fallback={<div className="p-20 text-center text-up-purple font-black animate-pulse uppercase tracking-widest text-sm">กำลังโหลดข้อมูลหอพัก...</div>}>
+    <Suspense fallback={<DirectorySkeleton />}>
       <DormDirectory />
     </Suspense>
   );
